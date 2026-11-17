@@ -1,0 +1,41 @@
+.menu {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--sombra);
+  border-bottom: var(--px) solid var(--esmeralda);
+}
+.menu nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .25rem 1.5rem;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: .75rem 1.25rem;
+}
+.menu a {
+  color: var(--papel);
+  text-decoration: none;
+  padding-left: 1.2rem;
+  position: relative;
+}
+.menu a:hover::before,
+.menu a:focus-visible::before {
+  content: "▶";
+  position: absolute;
+  left: 0;
+  color: var(--ouro);
+}
+
+main { max-width: 960px; margin: 0 auto; padding: 0 1.25rem; }
+section { padding: 3.5rem 0 1rem; }
+
+.hero { min-height: 70vh; display: grid; align-items: center; }
+
+footer {
+  margin-top: 4rem;
+  padding: 2rem 1.25rem;
+  text-align: center;
+  background: var(--sombra);
+  border-top: var(--px) solid var(--esmeralda);
+}
