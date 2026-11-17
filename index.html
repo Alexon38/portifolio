@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="Portfólio de Alexon: projetos, formação e experiências.">
+  <title>Alexon | Portfólio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+  <header class="menu">
+    <nav aria-label="Principal">
+      <a href="#inicio">Início</a>
+      <a href="#sobre">Sobre</a>
+      <a href="#formacao">Formação</a>
+      <a href="#experiencia">Experiência</a>
+      <a href="#habilidades">Habilidades</a>
+      <a href="#hobbies">Hobbies</a>
+      <a href="#projetos">Projetos</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="inicio" class="hero">
+      <div class="box">
+        <h1>Alexon</h1>
+        <p class="dialog" id="intro" aria-live="polite"></p>
+        <a class="btn" href="#projetos">Ver projetos</a>
+      </div>
+    </section>
+
+    <section id="sobre"><h2>Sobre mim</h2>
+      <div class="box" data-slot="sobre"></div></section>
+
+    <section id="formacao"><h2>Formação</h2>
+      <ul class="timeline" data-slot="formacao"></ul></section>
+
+    <section id="experiencia"><h2>Experiência</h2>
+      <ul class="timeline" data-slot="experiencia"></ul></section>
+
+    <section id="habilidades"><h2>Habilidades</h2>
+      <ul class="tags" data-slot="habilidades"></ul></section>
+
+    <section id="hobbies"><h2>Hobbies</h2>
+      <ul class="tags" data-slot="hobbies"></ul></section>
+
+    <section id="projetos"><h2>Projetos</h2>
+      <p class="status" id="repos-status">Procurando repositórios...</p>
+      <ul class="repos" id="repos"></ul></section>
+  </main>
+
+  <footer>
+    <a href="https://github.com/Alexon38" rel="noopener">github.com/Alexon38</a>
+  </footer>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
