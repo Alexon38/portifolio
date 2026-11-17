@@ -1,0 +1,44 @@
+:root {
+  --noite: #0b1410;
+  --grama: #12231a;
+  --folha: #5fbf7a;
+  --esmeralda: #2e8f55;
+  --papel: #f1edd2;
+  --sombra: #050a07;
+  --ouro: #f0c24b;
+  --alerta: #e0705a;
+  --px: 4px;
+}
+
+* { box-sizing: border-box; margin: 0; }
+html { scroll-behavior: smooth; scroll-padding-top: 64px; }
+
+body {
+  background-color: var(--noite);
+  background-image:
+    linear-gradient(45deg, var(--grama) 25%, transparent 25%, transparent 75%, var(--grama) 75%),
+    linear-gradient(45deg, var(--grama) 25%, transparent 25%, transparent 75%, var(--grama) 75%);
+  background-size: 32px 32px;
+  background-position: 0 0, 16px 16px;
+  color: var(--papel);
+  font-family: "VT323", "Courier New", monospace;
+  font-size: 1.5rem;
+  line-height: 1.35;
+}
+
+h1, h2 {
+  font-family: "Press Start 2P", monospace;
+  font-weight: 400;
+  line-height: 1.5;
+  text-shadow: 3px 3px 0 var(--sombra);
+}
+h1 { font-size: clamp(1.6rem, 6vw, 2.6rem); color: var(--ouro); }
+h2 { font-size: 1.1rem; color: var(--folha); margin-bottom: 1.25rem; }
+
+a { color: var(--ouro); }
+:focus-visible { outline: var(--px) solid var(--ouro); outline-offset: 2px; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation: none !important; transition: none !important; }
+}
