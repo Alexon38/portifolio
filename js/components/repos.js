@@ -1,32 +1,40 @@
-function cartao(repo) {
-  const li = document.createElement("li");
+const CORES = {
+  JavaScript: "#f0db4f", TypeScript: "#5aa9e6", Python: "#6fb1e8", HTML: "#ff8a5c",
+  CSS: "#b48ef0", Java: "#e8a05a", "C#": "#8fd18f", C: "#a0b0c0", "C++": "#e58fb3", PHP: "#9aa7e6",
+};
 
-  const nome = document.createElement("a");
-  nome.className = "nome";
+const criar = (tag, texto, classe) => {
+  const el = document.createElement(tag);
+  el.textContent = texto;
+  if (classe) el.className = classe;
+  return el;
+};
+
+function cartao(repo, indice) {
+  const li = document.createElement("li");
+  li.classList.add("corte");
+
+  const nome = criar("a", repo.name, "nome");
   nome.href = repo.html_url;
   nome.rel = "noopener";
-  nome.textContent = repo.name;
-
-  const descricao = document.createElement("p");
-  descricao.textContent = repo.description || "Sem descrição.";
 
   const meta = document.createElement("div");
   meta.className = "meta";
-  const partes = [repo.language, `★ ${repo.stargazers_count}`];
-  if (repo.fork) partes.push("fork");
-  meta.append(...partes.filter(Boolean).map((t) => {
-    const s = document.createElement("span");
-    s.textContent = t;
-    if (t === "fork") s.className = "fork";
-    return s;
-  }));
+  if (repo.language) {
+    const tipo = criar("span", repo.language, "tipo");
+    tipo.style.setProperty("--c", CORES[repo.language] || "");
+    meta.append(tipo);
+  }
+  meta.append(criar("span", `★ ${repo.stargazers_count}`));
+  if (repo.fork) meta.append(criar("span", "fork", "fork"));
 
-  li.append(nome, descricao, meta);
+  li.append(criar("span", `Nº ${String(indice + 1).padStart(3, "0")}`, "no"), nome,
+    criar("p", repo.description || "Sem descrição."), meta);
+
   if (repo.homepage) {
-    const demo = document.createElement("a");
+    const demo = criar("a", "Ver demo");
     demo.href = repo.homepage;
     demo.rel = "noopener";
-    demo.textContent = "Ver demo";
     li.append(demo);
   }
   return li;

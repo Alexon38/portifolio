@@ -19,6 +19,22 @@ export function renderLinhaDoTempo(slot, itens) {
   );
 }
 
-export function renderTags(slot, itens) {
+export function renderHabilidades(slot, itens) {
+  slot.replaceChildren(
+    ...itens.map(({ nome, nivel }) => {
+      const li = document.createElement("li");
+      const barra = document.createElement("div");
+      barra.className = "barra";
+      barra.setAttribute("aria-hidden", "true");
+      const preenchimento = document.createElement("i");
+      preenchimento.style.width = `${nivel}%`;
+      barra.append(preenchimento);
+      li.append(criar("span", nome), barra, criar("output", nivel));
+      return li;
+    })
+  );
+}
+
+export function renderGolpes(slot, itens) {
   slot.replaceChildren(...itens.map((t) => criar("li", t)));
 }

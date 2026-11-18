@@ -1,51 +1,43 @@
-.box {
-  background: var(--grama);
-  border: var(--px) solid var(--sombra);
-  box-shadow: 0 0 0 var(--px) var(--folha), 0 0 0 calc(var(--px) * 2) var(--sombra);
-  padding: 1.5rem;
-  margin: calc(var(--px) * 2);
-}
-.box p + p { margin-top: .75rem; }
-
-.dialog { min-height: 4.2em; margin: 1rem 0 1.5rem; }
-.dialog.typing::after { content: "▼"; color: var(--ouro); animation: pisca 1s steps(2) infinite; }
-@keyframes pisca { 50% { opacity: 0; } }
+.painel { background: var(--painel); padding: 1.5rem; box-shadow: inset 0 3px 0 var(--linha); }
+.painel p + p { margin-top: .75rem; }
 
 .btn {
-  display: inline-block;
-  padding: .5rem 1.25rem;
-  background: var(--esmeralda);
-  color: var(--papel);
+  justify-self: start;
+  padding: .55rem 1.1rem;
+  background: var(--brasa);
+  color: #1a0f05;
+  font-weight: 500;
   text-decoration: none;
-  border: var(--px) solid var(--sombra);
-  box-shadow: inset calc(var(--px) * -1) calc(var(--px) * -1) 0 rgba(0, 0, 0, .35);
+  clip-path: polygon(0 4px, 4px 4px, 4px 0, calc(100% - 4px) 0, calc(100% - 4px) 4px, 100% 4px, 100% calc(100% - 4px), calc(100% - 4px) calc(100% - 4px), calc(100% - 4px) 100%, 4px 100%, 4px calc(100% - 4px), 0 calc(100% - 4px));
 }
-.btn:hover { background: var(--folha); color: var(--sombra); }
+.btn:hover { background: var(--folha); }
 
-.timeline, .tags, .repos { list-style: none; padding: 0; }
-.timeline { display: grid; gap: 1.25rem; }
-.timeline li,
-.repos li {
-  background: var(--grama);
-  border: var(--px) solid var(--sombra);
-  box-shadow: 0 0 0 var(--px) var(--esmeralda);
-  padding: 1rem 1.25rem;
-  margin: var(--px);
-}
-.timeline strong, .repos a.nome { color: var(--ouro); font-size: 1.7rem; }
+/* linha do tempo: aqui a ordem importa, então a sequência é real */
+.timeline { list-style: none; padding: 0 0 0 1.5rem; border-left: 4px solid var(--linha); display: grid; gap: 1.25rem; }
+.timeline li { position: relative; background: var(--painel); padding: 1rem 1.25rem; }
+.timeline li::before { content: ""; position: absolute; left: -2.1rem; top: 1.2rem; width: 12px; height: 12px; background: var(--brasa); }
+.timeline strong { font-family: "Pixelify Sans", monospace; font-size: 1.25rem; color: var(--texto); }
 .timeline small { display: block; color: var(--folha); }
 
-.tags { display: flex; flex-wrap: wrap; gap: .75rem; }
-.tags li {
-  padding: .25rem .9rem;
-  background: var(--sombra);
-  border: var(--px) solid var(--esmeralda);
-}
+/* habilidades como atributos base de um Pokémon */
+.stats { list-style: none; padding: 0; display: grid; gap: .75rem; max-width: 520px; }
+.stats li { display: grid; grid-template-columns: 9rem 1fr 2.5rem; align-items: center; gap: .75rem; }
+.barra { height: 12px; background: var(--elevado); }
+.barra i { display: block; height: 100%; background: linear-gradient(90deg, var(--folha), var(--brasa)); }
+.stats output { color: var(--suave); text-align: right; }
 
-.repos { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.25rem; }
-.repos li { display: flex; flex-direction: column; gap: .5rem; }
-.repos .meta { margin-top: auto; display: flex; gap: 1rem; color: var(--folha); }
-.repos .fork { color: var(--alerta); }
+.golpes { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: .75rem; }
+.golpes li { padding: .4rem 1rem; background: var(--elevado); border-left: 4px solid var(--brasa); }
 
-.status { margin-bottom: 1rem; }
-.status.erro { color: var(--alerta); }
+.repos { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1rem; }
+.repos li { display: flex; flex-direction: column; gap: .5rem; background: var(--painel); padding: 1.1rem; box-shadow: inset 0 3px 0 var(--linha); }
+.repos li:hover { box-shadow: inset 0 3px 0 var(--folha); }
+.repos .no { color: var(--suave); font-size: .85rem; }
+.repos .nome { font-family: "Pixelify Sans", monospace; font-size: 1.3rem; color: var(--texto); word-break: break-word; }
+.repos p { color: var(--suave); font-size: .95rem; }
+.repos .meta { margin-top: auto; display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; font-size: .9rem; }
+.tipo { padding: .05rem .6rem; color: #0d1117; font-weight: 500; background: var(--c, var(--suave)); }
+.fork { color: var(--brasa); }
+
+.status { color: var(--suave); margin-bottom: 1rem; }
+.status.erro { color: var(--brasa); }

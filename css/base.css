@@ -1,44 +1,39 @@
 :root {
-  --noite: #0b1410;
-  --grama: #12231a;
-  --folha: #5fbf7a;
-  --esmeralda: #2e8f55;
-  --papel: #f1edd2;
-  --sombra: #050a07;
-  --ouro: #f0c24b;
-  --alerta: #e0705a;
-  --px: 4px;
+  --fundo: #0d1117;
+  --painel: #151b24;
+  --elevado: #1b2330;
+  --linha: #2a3442;
+  --texto: #e6ecf2;
+  --suave: #93a1b3;
+  --folha: #5ee3a1;
+  --brasa: #ff9a4d;
 }
 
 * { box-sizing: border-box; margin: 0; }
-html { scroll-behavior: smooth; scroll-padding-top: 64px; }
+html { scroll-behavior: smooth; scroll-padding-top: 2rem; }
 
 body {
-  background-color: var(--noite);
-  background-image:
-    linear-gradient(45deg, var(--grama) 25%, transparent 25%, transparent 75%, var(--grama) 75%),
-    linear-gradient(45deg, var(--grama) 25%, transparent 25%, transparent 75%, var(--grama) 75%);
-  background-size: 32px 32px;
-  background-position: 0 0, 16px 16px;
-  color: var(--papel);
-  font-family: "VT323", "Courier New", monospace;
-  font-size: 1.5rem;
-  line-height: 1.35;
+  background: var(--fundo) radial-gradient(#1c2430 1px, transparent 1px) 0 0 / 16px 16px;
+  color: var(--texto);
+  font: 400 1.05rem/1.6 "IBM Plex Sans", system-ui, sans-serif;
 }
 
-h1, h2 {
-  font-family: "Press Start 2P", monospace;
-  font-weight: 400;
-  line-height: 1.5;
-  text-shadow: 3px 3px 0 var(--sombra);
-}
-h1 { font-size: clamp(1.6rem, 6vw, 2.6rem); color: var(--ouro); }
-h2 { font-size: 1.1rem; color: var(--folha); margin-bottom: 1.25rem; }
+h1, h2 { font-family: "Pixelify Sans", monospace; font-weight: 600; line-height: 1.2; }
+h1 { font-size: clamp(2.4rem, 5vw, 3.2rem); color: var(--folha); }
+h2 { font-size: 1.6rem; margin-bottom: 1rem; display: flex; align-items: center; gap: .75rem; }
+h2::after { content: ""; flex: 1; height: 4px; background: repeating-linear-gradient(90deg, var(--linha) 0 8px, transparent 8px 12px); }
 
-a { color: var(--ouro); }
-:focus-visible { outline: var(--px) solid var(--ouro); outline-offset: 2px; }
+a { color: var(--brasa); }
+:focus-visible { outline: 3px solid var(--brasa); outline-offset: 3px; }
+
+/* cantos recortados em degraus, como molduras de menu de jogo 2D */
+.corte {
+  clip-path: polygon(0 6px, 6px 6px, 6px 0, calc(100% - 6px) 0, calc(100% - 6px) 6px, 100% 6px,
+    100% calc(100% - 6px), calc(100% - 6px) calc(100% - 6px), calc(100% - 6px) 100%,
+    6px 100%, 6px calc(100% - 6px), 0 calc(100% - 6px));
+}
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  * { animation: none !important; transition: none !important; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
 }

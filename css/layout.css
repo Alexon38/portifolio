@@ -1,41 +1,43 @@
-.menu {
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  background: var(--sombra);
-  border-bottom: var(--px) solid var(--esmeralda);
-}
-.menu nav {
-  display: flex;
-  flex-wrap: wrap;
-  gap: .25rem 1.5rem;
-  max-width: 960px;
+.pagina {
+  display: grid;
+  grid-template-columns: 290px 1fr;
+  gap: 2.5rem;
+  max-width: 1120px;
   margin: 0 auto;
-  padding: .75rem 1.25rem;
+  padding: 2rem 1.25rem 11rem;
 }
-.menu a {
-  color: var(--papel);
+
+.cartao {
+  position: sticky;
+  top: 2rem;
+  align-self: start;
+  display: grid;
+  gap: 1.25rem;
+  padding: 1.75rem 1.5rem;
+  background: var(--painel);
+  box-shadow: inset 0 3px 0 var(--folha);
+}
+.intro { color: var(--suave); min-height: 5.2em; }
+.intro.typing::after { content: "▌"; color: var(--brasa); animation: pisca 1s steps(2) infinite; }
+@keyframes pisca { 50% { opacity: 0; } }
+
+#menu { list-style: none; padding: 0; display: grid; gap: .15rem; }
+#menu a {
+  display: block;
+  padding: .3rem .5rem .3rem 1.4rem;
+  color: var(--suave);
   text-decoration: none;
-  padding-left: 1.2rem;
   position: relative;
 }
-.menu a:hover::before,
-.menu a:focus-visible::before {
-  content: "▶";
-  position: absolute;
-  left: 0;
-  color: var(--ouro);
-}
+#menu a:hover { color: var(--texto); }
+#menu a[aria-current="true"] { color: var(--folha); background: var(--elevado); }
+#menu a[aria-current="true"]::before { content: "▶"; position: absolute; left: .4rem; font-size: .8rem; top: .5rem; }
 
-main { max-width: 960px; margin: 0 auto; padding: 0 1.25rem; }
-section { padding: 3.5rem 0 1rem; }
+main section { padding-bottom: 3rem; }
+footer { color: var(--suave); font-size: .9rem; max-width: 60ch; }
 
-.hero { min-height: 70vh; display: grid; align-items: center; }
-
-footer {
-  margin-top: 4rem;
-  padding: 2rem 1.25rem;
-  text-align: center;
-  background: var(--sombra);
-  border-top: var(--px) solid var(--esmeralda);
+@media (max-width: 860px) {
+  .pagina { grid-template-columns: 1fr; padding-bottom: 9rem; }
+  .cartao { position: static; }
+  #menu { grid-auto-flow: column; overflow-x: auto; }
 }
